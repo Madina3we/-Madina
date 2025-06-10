@@ -1,15 +1,18 @@
 document.getElementById("studentForm").addEventListener("submit", function (event) {
     event.preventDefault(); // منع إعادة تحميل الصفحة
 
-    // الحصول على قيمة كود الطالب
-    const studentCode = document.getElementById("student-code").value;
+    // الحصول على القيم من الحقول
+    const studentCode = document.getElementById("student-code").value.trim();
+    const nationalId = document.getElementById("national-id").value.trim();
 
-    // التأكد من الكود
-    if (studentCode === "200075") {
-        // إذا كان الكود صحيحًا، الانتقال إلى صفحة أخرى
-        window.location.href = "d.html"; // قم بتحديث الرابط للصفحة التي تريد الانتقال إليها
+    const errorMessage = document.getElementById("error-message");
+
+    // التحقق من كود الطالب والرقم القومي
+    if (studentCode === "200075" && nationalId === "29909241400813") {
+        window.location.href = "d.html"; // الانتقال للنتيجة
     } else {
-        // إذا كان الكود خاطئًا، عرض رسالة خطأ
-        document.getElementById("error-message").textContent = "الكود الذي أدخلته غير صحيح. يرجى المحاولة مرة أخرى.";
+        errorMessage.textContent = "البيانات التي أدخلتها غير صحيحة. يرجى المحاولة مرة أخرى.";
     }
+});
+
 });
